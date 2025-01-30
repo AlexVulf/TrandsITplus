@@ -1,0 +1,547 @@
+não entendi a logica desta questão consegue me explicar melhor?
+
+beecrowd | 1022
+TDA Racional
+Por Neilor Tonin, URI  Brasil
+
+Timelimit: 1
+A tarefa aqui neste problema é ler uma expressão matemática na forma de dois números Racionais (numerador / denominador) e apresentar o resultado da operação. Cada operando ou operador é separado por um espaço em branco. A sequência de cada linha que contém a expressão a ser lida é: número, caractere, número, caractere, número, caractere, número. A resposta deverá ser apresentada e posteriormente simplificada. Deverá então ser apresentado o sinal de igualdade e em seguida a resposta simplificada. No caso de não ser possível uma simplificação, deve ser apresentada a mesma resposta após o sinal de igualdade.
+
+Considerando N1 e D1 como numerador e denominador da primeira fração, segue a orientação de como deverá ser realizada cada uma das operações:
+Soma: (N1*D2 + N2*D1) / (D1*D2)
+Subtração: (N1*D2 - N2*D1) / (D1*D2)
+Multiplicação: (N1*N2) / (D1*D2)
+Divisão: (N1/D1) / (N2/D2), ou seja (N1*D2)/(N2*D1)
+
+Entrada
+A entrada contem vários casos de teste. A primeira linha de cada caso de teste contem um inteiro N (1 ≤ N ≤ 1*104), indicando a quantidade de casos de teste que devem ser lidos logo a seguir. Cada caso de teste contém um valor racional X (1 ≤ X ≤ 1000), uma operação (-, +, * ou /) e outro valor racional Y (1 ≤ Y ≤ 1000).
+
+Saída
+A saída consiste em um valor racional, seguido de um sinal de igualdade e outro valor racional, que é a simplificação do primeiro valor. No caso do primeiro valor não poder ser simplificado, o mesmo deve ser repetido após o sinal de igualdade.
+
+Exemplo de Entrada	Exemplo de Saída
+4
+1 / 2 + 3 / 4
+1 / 2 - 3 / 4
+2 / 3 * 6 / 6
+1 / 2 / 3 / 4
+
+10/8 = 5/4
+-2/8 = -1/4
+12/18 = 2/3
+4/6 = 2/3
+
+O ChatGPT disse:
+ChatGPT
+Essa questão envolve manipulação de frações e operações básicas entre elas. Vou te explicar a lógica passo a passo.
+
+Passo 1: Compreender a Entrada
+A entrada contém:
+
+Um número inteiro N indicando quantas expressões racionais serão processadas.
+N expressões no formato:
+Copiar
+Editar
+N1 / D1 OP N2 / D2
+N1 e D1: Numerador e denominador da primeira fração.
+OP: Operador matemático (+, -, *, /).
+N2 e D2: Numerador e denominador da segunda fração.
+Exemplo de entrada:
+
+Copiar
+Editar
+4
+1 / 2 + 3 / 4
+1 / 2 - 3 / 4
+2 / 3 * 6 / 6
+1 / 2 / 3 / 4
+Passo 2: Operações Entre Frações
+As operações seguem as seguintes regras:
+
+Soma:
+
+𝑁
+1
+𝐷
+1
++
+𝑁
+2
+𝐷
+2
+=
+(
+𝑁
+1
+×
+𝐷
+2
+)
++
+(
+𝑁
+2
+×
+𝐷
+1
+)
+(
+𝐷
+1
+×
+𝐷
+2
+)
+D1
+N1
+​
+ + 
+D2
+N2
+​
+ = 
+(D1×D2)
+(N1×D2)+(N2×D1)
+​
+ 
+Exemplo:
+
+1
+2
++
+3
+4
+=
+(
+1
+×
+4
+)
++
+(
+3
+×
+2
+)
+2
+×
+4
+=
+4
++
+6
+8
+=
+10
+8
+2
+1
+​
+ + 
+4
+3
+​
+ = 
+2×4
+(1×4)+(3×2)
+​
+ = 
+8
+4+6
+​
+ = 
+8
+10
+​
+ 
+Subtração:
+
+𝑁
+1
+𝐷
+1
+−
+𝑁
+2
+𝐷
+2
+=
+(
+𝑁
+1
+×
+𝐷
+2
+)
+−
+(
+𝑁
+2
+×
+𝐷
+1
+)
+(
+𝐷
+1
+×
+𝐷
+2
+)
+D1
+N1
+​
+ − 
+D2
+N2
+​
+ = 
+(D1×D2)
+(N1×D2)−(N2×D1)
+​
+ 
+Exemplo:
+
+1
+2
+−
+3
+4
+=
+(
+1
+×
+4
+)
+−
+(
+3
+×
+2
+)
+2
+×
+4
+=
+4
+−
+6
+8
+=
+−
+2
+8
+2
+1
+​
+ − 
+4
+3
+​
+ = 
+2×4
+(1×4)−(3×2)
+​
+ = 
+8
+4−6
+​
+ = 
+8
+−2
+​
+ 
+Multiplicação:
+
+𝑁
+1
+𝐷
+1
+×
+𝑁
+2
+𝐷
+2
+=
+𝑁
+1
+×
+𝑁
+2
+𝐷
+1
+×
+𝐷
+2
+D1
+N1
+​
+ × 
+D2
+N2
+​
+ = 
+D1×D2
+N1×N2
+​
+ 
+Exemplo:
+
+2
+3
+×
+6
+6
+=
+2
+×
+6
+3
+×
+6
+=
+12
+18
+3
+2
+​
+ × 
+6
+6
+​
+ = 
+3×6
+2×6
+​
+ = 
+18
+12
+​
+ 
+Divisão:
+
+𝑁
+1
+𝐷
+1
+÷
+𝑁
+2
+𝐷
+2
+=
+𝑁
+1
+×
+𝐷
+2
+𝑁
+2
+×
+𝐷
+1
+D1
+N1
+​
+ ÷ 
+D2
+N2
+​
+ = 
+N2×D1
+N1×D2
+​
+ 
+Exemplo:
+
+1
+2
+÷
+3
+4
+=
+1
+×
+4
+3
+×
+2
+=
+4
+6
+2
+1
+​
+ ÷ 
+4
+3
+​
+ = 
+3×2
+1×4
+​
+ = 
+6
+4
+​
+ 
+Passo 3: Simplificação da Fração
+Após realizar a operação, a fração pode ser simplificada. Para isso, encontramos o MDC (Máximo Divisor Comum) do numerador e do denominador e dividimos ambos por ele.
+
+Exemplo de simplificação:
+
+10
+/
+8
+10/8 → 
+𝑀
+𝐷
+𝐶
+(
+10
+,
+8
+)
+=
+2
+MDC(10,8)=2 → 
+(
+10
+÷
+2
+)
+/
+(
+8
+÷
+2
+)
+=
+5
+/
+4
+(10÷2)/(8÷2)=5/4
+−
+2
+/
+8
+−2/8 → 
+𝑀
+𝐷
+𝐶
+(
+2
+,
+8
+)
+=
+2
+MDC(2,8)=2 → 
+(
+−
+2
+÷
+2
+)
+/
+(
+8
+÷
+2
+)
+=
+−
+1
+/
+4
+(−2÷2)/(8÷2)=−1/4
+12
+/
+18
+12/18 → 
+𝑀
+𝐷
+𝐶
+(
+12
+,
+18
+)
+=
+6
+MDC(12,18)=6 → 
+(
+12
+÷
+6
+)
+/
+(
+18
+÷
+6
+)
+=
+2
+/
+3
+(12÷6)/(18÷6)=2/3
+4
+/
+6
+4/6 → 
+𝑀
+𝐷
+𝐶
+(
+4
+,
+6
+)
+=
+2
+MDC(4,6)=2 → 
+(
+4
+÷
+2
+)
+/
+(
+6
+÷
+2
+)
+=
+2
+/
+3
+(4÷2)/(6÷2)=2/3
+Se o MDC for 1, significa que a fração já está na forma mais simples.
+
+Passo 4: Formatar a Saída
+A saída precisa mostrar a fração resultante antes e depois da simplificação:
+
+php
+Copiar
+Editar
+<fração_original> = <fração_simplificada>
+Se não for possível simplificar, a fração original é repetida.
+
+Exemplo de saída:
+
+diff
+Copiar
+Editar
+10/8 = 5/4
+-2/8 = -1/4
+12/18 = 2/3
+4/6 = 2/3
+Resumo
+Ler o número de expressões (N).
+Para cada expressão:
+Extrair N1, D1, OP, N2, D2.
+Realizar a operação conforme as regras das frações.
+Simplificar o resultado usando MDC.
+Exibir o resultado no formato "fração_original = fração_simplificada".
+Se a fração já estiver simplificada, apenas repetir.
