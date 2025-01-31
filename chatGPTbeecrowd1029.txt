@@ -1,0 +1,37 @@
+me explique como calcular uma sequencia de fibonacci recursivo 4?
+O ChatGPT disse:
+A sequência de Fibonacci é uma série de números onde cada número é a soma dos dois anteriores. 
+A sequência começa com 0 e 1. A fórmula recursiva para calcular a sequência de Fibonacci é:
+𝐹(𝑛)=𝐹(𝑛−1)+𝐹(𝑛−2)
+F(n)=F(n−1)+F(n−2)
+Com as condições iniciais:
+𝐹(0)=0F(0)=0𝐹(1)=1F(1)=1
+Para calcular o 4º número da sequência de Fibonacci recursivamente, você pode fazer da seguinte forma:
+F(4) = F(3) + F(2)
+F(3) = F(2) + F(1)
+F(2) = F(1) + F(0)
+F(1) = 1
+F(0) = 0
+Agora, substituindo as variáveis:
+F(4) = (F(2) + F(1)) = ((F(1) + F(0)) + 1)
+F(2) = (1 + 0) = 1
+F(3) = (1 + 1) = 2
+F(4) = (2 + 1) = 3
+Portanto, o 4º número da sequência de Fibonacci é 3.
+Porque o 4º número da sequência de Fibonacci é 3?
+O ChatGPT disse:
+ChatGPT
+O 4º número da sequência de Fibonacci é 3 porque, seguindo a regra da sequência, cada número é a soma dos dois números anteriores. 
+Aqui está a sequência explicada de forma detalhada:
+O primeiro número é 0. (F(0) = 0)
+O segundo número é 1. (F(1) = 1)
+O terceiro número é a soma dos dois anteriores: 
+𝐹(2)=𝐹(1)+𝐹(0)=1+0=1
+F(2)=F(1)+F(0)=1+0=1
+O quarto número é a soma dos dois anteriores: 
+𝐹(3)=𝐹(2)+𝐹(1)=1+1=2
+F(3)=F(2)+F(1)=1+1=2
+O quinto número é a soma dos dois anteriores: 
+𝐹(4)=𝐹(3)+𝐹(2)=2+1=3
+F(4)=F(3)+F(2)=2+1=3
+Portanto, o 4º número da sequência de Fibonacci é 3, pois ele é o resultado da soma do 3º (2) e do 2º (1) número da sequência.
